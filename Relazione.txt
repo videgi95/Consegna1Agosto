@@ -1,0 +1,57 @@
+Descrizione del processo di invio del pacchetto dal laptop0 con ip 192.168.100.100 al Pc0 con ip 192.168.100.103:
+
+1. Preparazione del pacchetto:
+   - Il Laptop0 prepara il pacchetto con i dati da inviare.
+   - Aggiunge l'indirizzo IP di destinazione(192.168.100.103) nell'header del pacchetto.
+
+
+2. Verifica della rete di destinazione:
+   - Il Laptop0 controlla se l'indirizzo IP di destinazione è sulla stessa rete.
+   - Conferma che la destinazione è sulla stessa rete locale.
+
+3. Risoluzione dell'indirizzo MAC:
+   - Il Laptop 0 utilizza ARP per ottenere l'indirizzo MAC del Pc0:
+     a. Invia un broadcast ARP sulla rete locale attraverso lo switch.
+     b. Lo switch inoltra il broadcast ARP a tutti i dispositivi collegati.
+     c. Il dispositivo con l'IP corrispondente risponde con il suo indirizzo MAC.
+
+4. Incapsulamento:
+   - Il pacchetto IP viene incapsulato in un frame Ethernet.
+   - Gli indirizzi MAC di origine e destinazione vengono aggiunti all'header del frame.
+
+5. Invio allo switch:
+   - Il frame viene inviato allo switch.
+   - Lo switch esamina l'indirizzo MAC di destinazione nel frame.
+   - Consulta la sua tabella MAC per determinare la porta di uscita corretta.
+
+6. Inoltro dello switch:
+   - Se l'indirizzo MAC di destinazione è nella tabella, lo switch inoltra il frame solo alla porta associata.
+  
+7. Ricezione e elaborazione:
+   - Il Pc0 riceve il frame dallo switch.
+   - Verifica che l'indirizzo MAC di destinazione corrisponda al proprio.
+   - Estrae il pacchetto IP e lo passa al livello superiore per l'elaborazione.
+
+Descrizione del processo di invio del pacchetto dal laptop0 con ip 192.168.100.100 al Pc0 con ip 192.168.200.100:
+
+1. Preparazione del pacchetto:
+   - Il Laptop 0 prepara il pacchetto con i dati da inviare.
+   - Aggiunge l'indirizzo IP di destinazione(192.168.200.100) nell'header del pacchetto.
+
+2. Verifica della rete di destinazione:
+   - Il Laptop0 controlla se l'indirizzo IP di destinazione(192.168.200.100) è sulla stessa rete o su una rete diversa.
+   - In questo caso, riconosce che la destinazione è su una rete diversa.
+
+3. Invio al gateway predefinito:
+   - Il pacchetto viene inviato al gateway predefinito(192.168.100.1).
+
+4. Routing:
+   - Il router riceve il pacchetto e consulta la sua tabella di routing.
+   - Determina l'interfaccia di uscita appropriata(192.168.200.1) per raggiungere la rete di destinazione.
+   - Il router usa ARP per trovare l'indirizzo MAC del dispositivo di destinazione.
+
+5. Consegna finale:
+   - Il pacchetto viene inviato al dispositivo di destinazione.
+   - Il dispositivo ricevente elabora il pacchetto.
+
+
